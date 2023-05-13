@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { NavLink } from "react-router-dom";
 import style from './Header.module.css';
-import Button from '../Button/Button';
+import Button from '../ui/Button/Button';
 import logo from '../../images/WhatsApp-Logo.wine.svg'
 
 const Header: FC = () => {

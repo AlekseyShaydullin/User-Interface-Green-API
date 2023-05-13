@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  flex: 0 0 40%;
+  max-width: 40%;
+  border-right: 1px solid #e9edef;
+}
+
+.menu {
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chats {
+  flex-grow: 1;
+  overflow-y: auto;
+  background-color: #fff;
+}
