@@ -12,6 +12,14 @@
 }
 
 .wrapper {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
   display: flex;
   align-items: center;
   text-decoration: none;

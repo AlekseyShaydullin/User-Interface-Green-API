@@ -5,6 +5,7 @@ import iconMessage from '../../images/icons-message.svg'
 import IconButton from '../../components/ui/IconButton/IconButton';
 import Avatar from '../../components/ui/Avatar/Avatar';
 import Chat from '../../components/ui/Chat/Chat';
+import Preview from '../../components/Preview/Preview';
 
 const MainPage: FC = () => {
   
@@ -38,7 +39,9 @@ const MainPage: FC = () => {
           <Chat title={'Рыська'} date={'Сегодня'} message={'Доброе утро, любимая'} />
         </ul>
       </section>
-      <section className={style.correspondence}></section>
+      <section className={style.correspondence}>
+        <Preview />
+      </section>
     </main>
   );
 }

@@ -1,0 +1,28 @@
+.wrapper {
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+  color: #00a884;
+}
+
+.subtitle {
+  margin: 0;
+  padding-top: 6px;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 34px;
+  color: #616161;
+}
+
+.span {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 34px;
+  color: #00a884;
+}

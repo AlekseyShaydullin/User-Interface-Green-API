@@ -4,6 +4,11 @@
   height: 88px;
   background-color: #fff;
   cursor: pointer;
+  transition: none 0s ease 0s;
+}
+
+.wrapper:hover {
+  background-color: #e9edef
 }
 
 .chat {
@@ -15,6 +20,7 @@
 }
 
 .header{
+  max-width: 410px;
   width: 30vw;
   display: flex;
   justify-content: space-between;
