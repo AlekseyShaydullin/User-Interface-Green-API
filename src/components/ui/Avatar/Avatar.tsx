@@ -2,10 +2,14 @@ import React, { FC } from 'react';
 import style from './Avatar.module.css';
 import { IAvatar } from '../../../utils/type/type';
 
-const Avatar: FC<IAvatar> = ({ avatar }) => {
+const Avatar: FC<IAvatar> = ({ avatar, size }) => {
   return (
     <>
-      <img className={style.avatar} src={avatar} alt='avatar' />
+      {size === 'owner' ? (
+        <img className={style.default} src={avatar} alt='avatar' />
+        ) : (
+        <img className={style.user} src={avatar} alt='avatar' />
+      )}
     </>
   )
 }

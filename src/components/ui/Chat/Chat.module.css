@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  height: 88px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.chat {
+  padding: 10px 0 15px;
+  display: flex;  
+  flex-direction: column;
+  border-bottom: 1px solid #e9edef;
+  box-sizing: border-box;
+}
+
+.header{
+  width: 30vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #111b21;
+}
+
+.date {
+  font-size: 12px;
+  line-height: 20px;
+  color: #667781;
+}
+
+.message {
+  margin: 2px 0 0;
+  width: 239px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #667781;
+}
