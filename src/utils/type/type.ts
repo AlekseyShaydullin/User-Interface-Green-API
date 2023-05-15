@@ -13,10 +13,11 @@ export interface IAvatar {
   size: string;
 }
 
-export interface IChat {
+export interface IContact {
   title: string;
   date: string;
   message: string;
+  onClick?: (e:any) => void;
 }
 
 export interface ILabel extends LabelHTMLAttributes<HTMLLabelElement> {
@@ -26,4 +27,9 @@ export interface ILabel extends LabelHTMLAttributes<HTMLLabelElement> {
 export interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   type: string;
   placeholder: string;
+}
+
+export interface IHeaderPanel {
+  avatar: string;
+  icon: string;
 }
