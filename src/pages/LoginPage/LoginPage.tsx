@@ -6,6 +6,7 @@ import Input from '../../components/ui/Input/Input';
 import ButtonForm from '../../components/ui/ButtonForm/ButtonForm';
 import { TLocation } from '../../utils/type/type';
 import { getStateInstance } from '../../service/api';
+import { setCookie } from '../../utils/cookie';
 
 const LoginPage: FC = () => {
   const history = useHistory();
@@ -27,7 +28,10 @@ const LoginPage: FC = () => {
     setLogin('');
     setPassword('');
     try {
-      await getStateInstance(idInstance, apiTokenInstance);
+      await getStateInstance(idInstance, apiTokenInstance)
+        .then((data: any) => {
+          setCookie('accessToken', data.stateInstance.split('Bearer ')[1]);
+        })
       history.replace({ pathname: '/' });
       setIsLoading(false);
       setErrorMsg('')
@@ -36,7 +40,6 @@ const LoginPage: FC = () => {
       console.log(error)
     }
   }
-  
 
   return (
     <>

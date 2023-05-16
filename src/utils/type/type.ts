@@ -1,4 +1,10 @@
-import { ButtonHTMLAttributes, InputHTMLAttributes, LabelHTMLAttributes } from "react";
+import {
+  ButtonHTMLAttributes,
+  HTMLProps,
+  InputHTMLAttributes,
+  LabelHTMLAttributes,
+} from "react";
+import { RouteComponentProps } from "react-router-dom";
 
 export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
@@ -47,3 +53,10 @@ export type TLocation = {
   from: string;
   state?: object;
 };
+
+export interface IProtectedRoute {
+  children: string | JSX.Element | JSX.Element[];
+  rest?: HTMLProps<RouteComponentProps>;
+  path?: string;
+  exact?: boolean;
+}
