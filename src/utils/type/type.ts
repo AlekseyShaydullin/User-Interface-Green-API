@@ -33,3 +33,17 @@ export interface IHeaderPanel {
   avatar: string;
   icon: string;
 }
+
+export type TRequest = <T>(idInstance: string | null, apiTokenInstance: string | null, event: string, options?: RequestInit) => Promise<T>;
+
+export type TLocation = {
+  background: {
+    pathname: string;
+    search: string;
+    hash: string;
+    state: null;
+    key: string;
+  }
+  from: string;
+  state?: object;
+};
