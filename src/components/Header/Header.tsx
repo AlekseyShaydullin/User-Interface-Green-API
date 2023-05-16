@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { NavLink, useHistory } from "react-router-dom";
 import style from './Header.module.css';
 import Button from '../ui/Button/Button';

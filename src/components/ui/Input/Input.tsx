@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import style from './Input.module.css';
 import { IInput } from '../../../utils/type/type';
 

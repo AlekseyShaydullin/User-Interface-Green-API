@@ -9,15 +9,21 @@ import Chat from '../../components/Chat/Chat';
 import HeaderPanel from '../../components/ui/HeaderPanel/HeaderPanel';
 
 const MainPage: FC = () => {
+  const addUser = () => (
+    console.log('Я добаваляю чат')
+  )
 
-
+  const closeChat = () => {
+    console.log('Я закрываю чат');
+    
+  }
   
   return (
     <>
       <Header />
       <main className={style.main}>
         <section className={style.panel}>
-          <HeaderPanel avatar={avatar} icon={iconMessage} />
+          <HeaderPanel avatar={avatar} icon={iconMessage} onClick={addUser} />
           <ul className={style.chats}>
             <Contact title={'Петя'} date={'Вчера'} message={'Привет. Как дела?'} />
             <Contact title={'Рыська'} date={'Сегодня'} message={'Доброе утро, любимая'} />
@@ -43,7 +49,7 @@ const MainPage: FC = () => {
         </section>
         <section className={style.correspondence}>
           {/* <Preview /> */}
-          <Chat />
+          <Chat onClick={closeChat} />
         </section>
       </main>
     </>

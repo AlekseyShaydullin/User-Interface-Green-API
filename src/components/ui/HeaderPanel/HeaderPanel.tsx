@@ -4,11 +4,13 @@ import Avatar from '../Avatar/Avatar';
 import ButtonIcon from '../../ui/ButtonIcon/ButtonIcon';
 import { IHeaderPanel } from '../../../utils/type/type';
 
-const HeaderPanel: FC<IHeaderPanel> = ({ avatar, icon }) => {
+const HeaderPanel: FC<IHeaderPanel> = ({ avatar, icon, onClick }) => {
+
+
   return (
     <div className={style.menu}>
       <Avatar avatar={avatar} size={'owner'} />
-      <ButtonIcon icon={icon} />
+      <ButtonIcon icon={icon} onClick={onClick}/>
     </div>
   )
 }

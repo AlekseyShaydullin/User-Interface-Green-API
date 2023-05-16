@@ -38,6 +38,11 @@ export interface IInput extends InputHTMLAttributes<HTMLInputElement> {
 export interface IHeaderPanel {
   avatar: string;
   icon: string;
+  onClick?: (e:any) => void;
+}
+
+export interface IChat {
+  onClick?: (e:any) => void;
 }
 
 export type TRequest = <T>(idInstance: string | null, apiTokenInstance: string | null, event: string, options?: RequestInit) => Promise<T>;
