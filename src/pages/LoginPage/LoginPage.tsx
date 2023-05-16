@@ -1,16 +1,14 @@
 import { ChangeEvent, FC, SyntheticEvent, useState } from 'react';
-import { Redirect, useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import style from './LoginPage.module.css';
 import Label from '../../components/ui/Label/Label';
 import Input from '../../components/ui/Input/Input';
 import ButtonForm from '../../components/ui/ButtonForm/ButtonForm';
-import { TLocation } from '../../utils/type/type';
 import { getStateInstance } from '../../service/api';
 import { setCookie } from '../../utils/cookie';
 
 const LoginPage: FC = () => {
   const history = useHistory();
-  const location = useLocation<TLocation>();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
