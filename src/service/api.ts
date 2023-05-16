@@ -1,4 +1,10 @@
-import { apiUrl, eventSendMessage, eventStateInstance } from "../utils/constants";
+import {
+  apiUrl,
+  eventDeleteNotification,
+  eventGetNotification,
+  eventSendMessage,
+  eventStateInstance,
+} from "../utils/constants";
 import { TRequest } from "../utils/type/type";
 
 const checkRes = <T>(res: Response): Promise<T> => {
@@ -8,7 +14,6 @@ const checkRes = <T>(res: Response): Promise<T> => {
     throw Error(`error ${res}`)
   }
 }
-
 
 const request: TRequest = async <T>(
     idInstance: string | null,
@@ -39,13 +44,33 @@ export async function sendMessage (
     phoneNumber: string,
     message: string
   ) {
-    return await request(idInstance, apiTokenInstance, eventSendMessage, {
-      method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chatId: phoneNumber,
-        message: message,
-        redirect: 'follow'
-      })
+  return await request(idInstance, apiTokenInstance, eventSendMessage, {
+    method: 'POST',
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chatId: phoneNumber,
+      message: message,
+      redirect: 'follow'
     })
+  })
+}
+
+export async function getNotification (
+    idInstance: string | null,
+    apiTokenInstance: string | null,
+  ) {
+  return await request(idInstance, apiTokenInstance, eventGetNotification, {
+    method: 'GET',
+    redirect: 'follow'  
+  })
+}
+
+export async function deleteNotification (
+    idInstance: string | null,
+    apiTokenInstance: string | null,
+) {
+  return await request(idInstance, apiTokenInstance, eventDeleteNotification, {
+    method: 'DELETE',
+    redirect: 'follow'
+  })
 }

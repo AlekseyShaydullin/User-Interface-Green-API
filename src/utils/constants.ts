@@ -1,3 +1,5 @@
 export const apiUrl: string = 'https://api.green-api.com';
 export const eventStateInstance: string = 'getStateInstance';
 export const eventSendMessage: string = 'SendMessage';
+export const eventGetNotification: string = 'receiveNotification';
+export const eventDeleteNotification: string = 'deleteNotification';
