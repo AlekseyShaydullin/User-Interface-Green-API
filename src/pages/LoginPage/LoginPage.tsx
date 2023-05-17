@@ -23,8 +23,6 @@ const LoginPage: FC = () => {
     let idInstance = localStorage.getItem('idInstance');
     let apiTokenInstance = localStorage.getItem('apiTokenInstance');
 
-    setLogin('');
-    setPassword('');
     try {
       await getStateInstance(idInstance, apiTokenInstance)
         .then((data: any) => {
@@ -33,6 +31,8 @@ const LoginPage: FC = () => {
       history.replace({ pathname: '/' });
       setIsLoading(false);
       setErrorMsg('')
+      setLogin('');
+      setPassword('');
     } catch (error) {
       setErrorMsg('Некорректно введены регистрационные данные')
       console.log(error)

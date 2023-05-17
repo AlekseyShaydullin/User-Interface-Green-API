@@ -68,7 +68,12 @@ const MainPage: FC = () => {
         </section>
         <section className={style.correspondence}>
           {openChat ? (
-            <Chat onClick={handelCloseChat} date={user.date} message={user.message} />
+            <Chat
+              onClick={handelCloseChat}
+              date={user.date}
+              incomingMessage={user.message}
+              phone={user.phone}
+            />
           ) : (
             <Preview />
           )}

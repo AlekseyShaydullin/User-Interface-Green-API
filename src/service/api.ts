@@ -36,22 +36,20 @@ export async function getStateInstance (
   })
 }
 
-// `${phoneNumber}@c.us`
-
-export async function sendMessage (
+export async function sendMessageApi (
     idInstance: string | null,
     apiTokenInstance: string | null,
-    phoneNumber: string,
+    phone: string,
     message: string
   ) {
   return await request(idInstance, apiTokenInstance, eventSendMessage, {
     method: 'POST',
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      chatId: phoneNumber,
+      chatId: phone,
       message: message,
-      redirect: 'follow'
-    })
+    }),
+    redirect: 'follow'
   })
 }
 

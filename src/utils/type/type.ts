@@ -44,8 +44,9 @@ export interface IHeaderPanel {
 }
 
 export interface IChat {
-  message: string;
+  incomingMessage: string;
   date: string;
+  phone: string;
   onClick?: (e:any) => void;
 }
 
