@@ -2,7 +2,7 @@ import React, { FC, HTMLProps, ReactNode } from 'react';
 import { Route, Redirect, RouteComponentProps, useLocation } from 'react-router-dom';
 import { getCookie } from '../../utils/cookie';
 
-type TProtectedRoute = {
+interface IProtectedRoute {
   children: ReactNode;
   onlyForAuth: boolean;
   path: string;
@@ -10,7 +10,7 @@ type TProtectedRoute = {
   rest?: HTMLProps<RouteComponentProps>
 }
 
-export const ProtectedRoute: FC<TProtectedRoute> = ({ onlyForAuth, children, ...rest }) => {
+export const ProtectedRoute: FC<IProtectedRoute> = ({ onlyForAuth, children, ...rest }) => {
   const isAuthorized = getCookie('accessToken');
   const location = useLocation();
 

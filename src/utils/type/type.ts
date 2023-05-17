@@ -1,7 +1,7 @@
 import {
   ButtonHTMLAttributes,
-  HTMLProps,
   InputHTMLAttributes,
+  ReactNode,
   LabelHTMLAttributes,
 } from "react";
 import { RouteComponentProps } from "react-router-dom";
@@ -12,6 +12,7 @@ export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export interface IButtonIcon extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon: string;
+  modal?: boolean;
 }
 
 export interface IAvatar {
@@ -47,7 +48,7 @@ export interface IChat {
 
 export type TRequest = <T>(idInstance: string | null, apiTokenInstance: string | null, event: string, options?: RequestInit) => Promise<T>;
 
-export type TLocation = {
+export interface ILocation {
   background: {
     pathname: string;
     search: string;
@@ -59,9 +60,17 @@ export type TLocation = {
   state?: object;
 };
 
-export interface IProtectedRoute {
-  children: string | JSX.Element | JSX.Element[];
-  rest?: HTMLProps<RouteComponentProps>;
-  path?: string;
-  exact?: boolean;
+export interface IModal {
+  visible: boolean;
+  closeModal: () => void;
+}
+
+export interface IModalOverlay {
+  visible: boolean;
+  closeModal: () => void;
+}
+
+export interface IModalAddContact {
+  isActive: boolean;
+  closeModal: () => void;
 }

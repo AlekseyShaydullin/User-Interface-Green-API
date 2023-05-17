@@ -4,6 +4,7 @@
   border: 0;
   padding: 0;
   cursor: pointer;
+  background: transparent;
 }
 
 .img {
@@ -11,4 +12,21 @@
   height: 25px;
   background: transparent;
   opacity: .6;
+}
+
+.closeIcon {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: .2s;
+  background: transparent;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+}
+
+.closeIcon:hover {
+  opacity: .8;
 }
