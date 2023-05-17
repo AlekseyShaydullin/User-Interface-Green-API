@@ -11,18 +11,22 @@ import ModalAddContact from '../../components/ModalAddContact/ModalAddContact';
 
 const MainPage: FC = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [openChat, setOpenChat] = useState(false)
 
-  const activeModal = () => (
-    setOpenModal(true)
-  )
+  const activeModal = () => {
+    setOpenModal(true);
+  }
 
   const closeModal = () => {
     setOpenModal(false);
   };
 
-  const closeChat = () => {
-    console.log('Я закрываю чат');
-    
+  const handelOpenChat = () => {
+    setOpenChat(true);
+  }
+
+  const handelCloseChat = () => {
+    setOpenChat(false);
   }
 
   const userContact = () => {
@@ -54,6 +58,7 @@ const MainPage: FC = () => {
                 date={user.date}
                 message={user.message}
                 phone={user.phone}
+                open={handelOpenChat}
               />
             ) : (
               ''
@@ -62,8 +67,11 @@ const MainPage: FC = () => {
           </ul>
         </section>
         <section className={style.correspondence}>
-          {/* <Preview /> */}
-          <Chat onClick={closeChat} />
+          {openChat ? (
+            <Chat onClick={handelCloseChat} date={user.date} message={user.message} />
+          ) : (
+            <Preview />
+          )}
         </section>
       </main>
       <ModalAddContact visible={openModal} closeModal={closeModal} />

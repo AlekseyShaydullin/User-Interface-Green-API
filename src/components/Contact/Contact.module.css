@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   align-items: center;
+  list-style-type: none;
   height: 88px;
   background-color: #fff;
   cursor: pointer;

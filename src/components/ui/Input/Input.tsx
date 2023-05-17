@@ -2,12 +2,16 @@ import { FC } from 'react';
 import style from './Input.module.css';
 import { IInput } from '../../../utils/type/type';
 
-const Input: FC<IInput> = ({ ...rest }) => {
+//textarea
+
+const Input: FC<IInput> = ({ destiny, ...rest }) => {
   return(
     <>
-      <input className={style.input} 
-        {...rest}
-      />
+      {destiny !== 'chat' ? (
+        <input className={style.input} {...rest} />
+      ) : (
+        <textarea className={style.textarea} {...rest}></textarea>
+      )}
     </>
   )
 }

@@ -1,0 +1,40 @@
+.wrapper {
+  display: flex;
+  justify-content: flex-start;
+  list-style-type: none;
+}
+
+.messageContact {
+  max-width: 30vw;
+  margin-left: 63px;
+  margin-bottom: 12px;
+  padding: 8px;
+  display: flex;
+  gap: 10px;
+  box-sizing: border-box;
+  border-radius: 7.5px;
+  background-color: #fff;
+  box-shadow: 0 1px 0.5px rgba(11, 20, 26,.13);
+}
+
+.contact {
+  font-size: 14.2px;
+  font-weight: 400;
+  line-height: 19px;
+  font-style: normal;
+  color: #434d52;
+  box-sizing: border-box;
+}
+
+.wrapperTime {
+  display: flex;
+  align-items: flex-end;
+}
+
+.time {
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(17, 27, 33);
+  opacity: .8;
+}

@@ -1,7 +1,7 @@
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, useState, useEffect } from 'react';
 import { IModal } from '../../utils/type/type';
 import { createPortal } from 'react-dom';
-import { modalContainer } from '../../utils/constants';
+import { body, modalContainer } from '../../utils/constants';
 import style from './ModalAddContact.module.css'
 import ModalOverlay from '../ModalOverlay/ModalOverlay';
 import ButtonIcon from '../ui/ButtonIcon/ButtonIcon';
@@ -14,6 +14,22 @@ const ModalAddContact: FC<IModal> = ({ visible, closeModal }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
+  useEffect(() => {
+    const handleEscClose = (e: {key: string}) => {
+      if (e.key === 'Escape') {closeModal()}
+    }
+    
+    if (visible) {
+      document.addEventListener('keydown', handleEscClose);
+      body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscClose);
+      body.style.overflow = 'visible';
+    };
+  }, [closeModal, visible]);
+
   let contact = {};
 
   const createContact = () => {
@@ -23,7 +39,6 @@ const ModalAddContact: FC<IModal> = ({ visible, closeModal }) => {
       phone: `${phone}@c.us`,
       message: ''
     }
-
     localStorage.setItem(`contact`, JSON.stringify(contact));
     closeModal();
     setName('');

@@ -1,10 +1,8 @@
 import {
   ButtonHTMLAttributes,
   InputHTMLAttributes,
-  ReactNode,
   LabelHTMLAttributes,
 } from "react";
-import { RouteComponentProps } from "react-router-dom";
 
 export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
@@ -25,6 +23,7 @@ export interface IContact {
   date: string;
   message: string;
   phone: string;
+  open: () => void;
   onClick?: (e:any) => void;
 }
 
@@ -32,9 +31,10 @@ export interface ILabel extends LabelHTMLAttributes<HTMLLabelElement> {
   text: string;
 }
 
-export interface IInput extends InputHTMLAttributes<HTMLInputElement> {
+export interface IInput extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   type: string;
   placeholder: string;
+  destiny?: string;
 }
 
 export interface IHeaderPanel {
@@ -44,10 +44,17 @@ export interface IHeaderPanel {
 }
 
 export interface IChat {
+  message: string;
+  date: string;
   onClick?: (e:any) => void;
 }
 
-export type TRequest = <T>(idInstance: string | null, apiTokenInstance: string | null, event: string, options?: RequestInit) => Promise<T>;
+export type TRequest = <T>(
+  idInstance: string | null,
+  apiTokenInstance: string | null,
+  event: string,
+  options?: RequestInit
+  ) => Promise<T>;
 
 export interface ILocation {
   background: {
@@ -66,12 +73,7 @@ export interface IModal {
   closeModal: () => void;
 }
 
-export interface IModalOverlay {
-  visible: boolean;
-  closeModal: () => void;
-}
-
-export interface IModalAddContact {
-  isActive: boolean;
-  closeModal: () => void;
+export interface IMessage {
+  text: string;
+  time: string;
 }
