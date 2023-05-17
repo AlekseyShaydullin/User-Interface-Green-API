@@ -24,6 +24,22 @@ const MainPage: FC = () => {
     console.log('Я закрываю чат');
     
   }
+
+  const userContact = () => {
+    const contactJSON = localStorage.getItem('contact');  
+    if (contactJSON === null) {
+      return undefined
+    }  
+    try {
+      return JSON.parse(contactJSON)
+    } catch (e) {
+      localStorage.removeItem('contact')
+      return undefined
+    }
+  }
+
+  let user = userContact();
+  console.log(user);  
   
   return (
     <>
@@ -32,26 +48,17 @@ const MainPage: FC = () => {
         <section className={style.panel}>
           <HeaderPanel avatar={avatar} icon={iconMessage} onClick={activeModal} />
           <ul className={style.chats}>
-            <Contact title={'Петя'} date={'Вчера'} message={'Привет. Как дела?'} />
-            <Contact title={'Рыська'} date={'Сегодня'} message={'Доброе утро, любимая'} />
-            <Contact title={'Петя'} date={'Вчера'} message={'Привет. Как дела?'} />
-            <Contact title={'Рыська'} date={'Сегодня'} message={'Доброе утро, любимая'} />
-            <Contact title={'Петя'} date={'Вчера'} message={'Привет. Как дела?'} />
-            <Contact title={'Рыська'} date={'Сегодня'} message={'Доброе утро, любимая'} />
-            <Contact title={'Петя'} date={'Вчера'} message={'Привет. Как дела?'} />
-            <Contact title={'Рыська'} date={'Сегодня'} message={'Доброе утро, любимая'} />
-            <Contact title={'Петя'} date={'Вчера'} message={'Привет. Как дела?'} />
-            <Contact title={'Рыська'} date={'Сегодня'} message={'Доброе утро, любимая'} />
-            <Contact title={'Петя'} date={'Вчера'} message={'Привет. Как дела?'} />
-            <Contact title={'Рыська'} date={'Сегодня'} message={'Доброе утро, любимая'} />
-            <Contact title={'Петя'} date={'Вчера'} message={'Привет. Как дела?'} />
-            <Contact title={'Рыська'} date={'Сегодня'} message={'Доброе утро, любимая'} />
-            <Contact title={'Петя'} date={'Вчера'} message={'Привет. Как дела?'} />
-            <Contact title={'Рыська'} date={'Сегодня'} message={'Доброе утро, любимая'} />
-            <Contact title={'Петя'} date={'Вчера'} message={'Привет. Как дела?'} />
-            <Contact title={'Рыська'} date={'Сегодня'} message={'Доброе утро, любимая'} />
-            <Contact title={'Петя'} date={'Вчера'} message={'Привет. Как дела?'} />
-            <Contact title={'Рыська'} date={'Сегодня'} message={'Доброе утро, любимая'} />
+            {user ? (
+              <Contact 
+                title={user.name}
+                date={user.date}
+                message={user.message}
+                phone={user.phone}
+              />
+            ) : (
+              ''
+            )}
+            
           </ul>
         </section>
         <section className={style.correspondence}>

@@ -19,32 +19,21 @@ const ModalAddContact: FC<IModal> = ({ visible, closeModal }) => {
   const createContact = () => {
     contact = {
       name: name,
+      date: new Date(),
       phone: `${phone}@c.us`,
       message: ''
     }
 
-    localStorage.setItem(`contact-${phone}`, JSON.stringify(contact))
+    localStorage.setItem(`contact`, JSON.stringify(contact));
+    closeModal();
+    setName('');
+    setPhone('');
   }
-
-  // const storageLength = window.localStorage.length;
-
-  // let contacts = [];
-  // const userJSON = localStorage.getItem('contact-79095801349');
-  // console.log(userJSON);
-  
-
-  // for (let i = 0; i < storageLength; i++) {
-  //   contacts.push(window.localStorage.key(i))
-  // }
-
-  // console.log(contacts.includes('contact'));
-
-  // console.log(window.localStorage.key(2));
   
   return createPortal ((
     <section className={visible ? `${style.popup} ${style.popup_active}` : `${style.popup}`}>
       <ModalOverlay closeModal={closeModal} visible={visible} />
-      <div className={`${style.modal} pt-10 pb-10 pl-10 pr-10`}>
+      <div className={style.modal}>
         <div className={style.wrapper}>
         <ButtonIcon icon={iconClose} onClick={closeModal} modal={true} />
           <h2 className={style.title}>Добавить контакт</h2>
@@ -60,7 +49,7 @@ const ModalAddContact: FC<IModal> = ({ visible, closeModal }) => {
             <Label text={'Телефон'} />
             <Input
               type='text'
-              placeholder='Введите номер телефона начиная с цифры 7'
+              placeholder='Введите номер телефона в формате: 7XXXXXXXXXX'
               value={phone}
               onChange={(e: ChangeEvent<HTMLInputElement>) => setPhone(e.target.value)}
               required 

@@ -24,6 +24,7 @@ export interface IContact {
   title: string;
   date: string;
   message: string;
+  phone: string;
   onClick?: (e:any) => void;
 }
 
