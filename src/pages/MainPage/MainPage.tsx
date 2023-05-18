@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import style from './MainPage.module.css';
 import avatar from '../../images/standart-avatar.png';
 import iconMessage from '../../images/icons-message.svg';
@@ -8,10 +8,14 @@ import Contact from '../../components/Contact/Contact';
 import Chat from '../../components/Chat/Chat';
 import HeaderPanel from '../../components/ui/HeaderPanel/HeaderPanel';
 import ModalAddContact from '../../components/ModalAddContact/ModalAddContact';
+import { getChatHistory } from '../../service/api';
+import { apiTokenInstance, idInstance } from '../../utils/constants';
+import { ILastMessage } from '../../utils/type/type';
 
 const MainPage: FC = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [openChat, setOpenChat] = useState(false)
+  const [openChat, setOpenChat] = useState(false);
+  const [chatHistory, setChatHistory] = useState(Array<ILastMessage>)
 
   const activeModal = () => {
     setOpenModal(true);
@@ -42,8 +46,18 @@ const MainPage: FC = () => {
     }
   }
 
-  let user = userContact();
-  console.log(user);  
+  let user = userContact(); 
+
+  useEffect(() => {
+    getChatHistory(idInstance, apiTokenInstance, user.phone)
+          .then((data: any) => setChatHistory(data))
+          .catch(error => console.log(error))
+  }, [user.phone]);
+
+  const lastMessage: ILastMessage = chatHistory[0]
+  
+  console.log(lastMessage ? lastMessage : 'нет сообщения');
+  
   
   return (
     <>
@@ -52,11 +66,11 @@ const MainPage: FC = () => {
         <section className={style.panel}>
           <HeaderPanel avatar={avatar} icon={iconMessage} onClick={activeModal} />
           <ul className={style.chats}>
-            {user ? (
+            {user && lastMessage ? (
               <Contact 
                 title={user.name}
-                date={user.date}
-                message={user.message}
+                date={lastMessage.timestamp}
+                message={lastMessage.textMessage}
                 phone={user.phone}
                 open={handelOpenChat}
               />
@@ -67,11 +81,10 @@ const MainPage: FC = () => {
           </ul>
         </section>
         <section className={style.correspondence}>
-          {openChat ? (
+          {openChat && chatHistory ? (
             <Chat
               onClick={handelCloseChat}
-              date={user.date}
-              incomingMessage={user.message}
+              data={chatHistory}
               phone={user.phone}
             />
           ) : (

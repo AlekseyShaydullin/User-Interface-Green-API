@@ -3,15 +3,16 @@ import style from './Contact.module.css';
 import Avatar from '../ui/Avatar/Avatar';
 import avatar from '../../images/standart-avatar.png';
 import { IContact } from '../../utils/type/type';
+import { timeConverter } from '../../utils/helpers';
 
 const Contact: FC<IContact> = ({ title, date, message, phone, open }) => {
   const currentDay = new Date().getDate();
-  const dayOfMessage = date.slice(8, 10);
+  const dayOfMessage = timeConverter(date).slice(0, 2);
   const userPhone = phone.slice(0, 11);
 
   const checkDay = () => {
     if(Number(dayOfMessage) === currentDay) {
-      return true
+      return true 
     }
     return false
   }

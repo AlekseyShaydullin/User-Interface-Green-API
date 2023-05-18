@@ -1,6 +1,7 @@
 import {
   apiUrl,
   eventDeleteNotification,
+  eventGetChatHistory,
   eventGetNotification,
   eventSendMessage,
   eventStateInstance,
@@ -69,6 +70,22 @@ export async function deleteNotification (
 ) {
   return await request(idInstance, apiTokenInstance, eventDeleteNotification, {
     method: 'DELETE',
+    redirect: 'follow'
+  })
+}
+
+export async function getChatHistory (
+  idInstance: string | null,
+  apiTokenInstance: string | null,
+  phone: string,
+) {
+  return await request(idInstance, apiTokenInstance, eventGetChatHistory, {
+    method: 'POST',
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chatId: phone,
+      count: 10,
+    }),
     redirect: 'follow'
   })
 }

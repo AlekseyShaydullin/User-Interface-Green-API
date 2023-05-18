@@ -20,7 +20,7 @@ export interface IAvatar {
 
 export interface IContact {
   title: string;
-  date: string;
+  date: number;
   message: string;
   phone: string;
   open: () => void;
@@ -44,8 +44,7 @@ export interface IHeaderPanel {
 }
 
 export interface IChat {
-  incomingMessage: string;
-  date: string;
+  data: Array<ILastMessage>;
   phone: string;
   onClick?: (e:any) => void;
 }
@@ -57,18 +56,6 @@ export type TRequest = <T>(
   options?: RequestInit
   ) => Promise<T>;
 
-export interface ILocation {
-  background: {
-    pathname: string;
-    search: string;
-    hash: string;
-    state: null;
-    key: string;
-  }
-  from: string;
-  state?: object;
-};
-
 export interface IModal {
   visible: boolean;
   closeModal: () => void;
@@ -76,5 +63,16 @@ export interface IModal {
 
 export interface IMessage {
   text: string;
-  time: string;
+  time: number;
+}
+
+export interface ILastMessage {
+  chatId: string;
+  idMessage: string;
+  senderId: string;
+  senderName: string;
+  textMessage: string;
+  timestamp: number;
+  type: string;
+  typeMessage: string;
 }
